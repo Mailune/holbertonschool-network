@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This script modifies the /etc/hosts file to redirect IPs
+
+# Backup the /etc/hosts file
+sudo cp /etc/hosts /etc/hosts.bak
+
+# Add or update the entries in /etc/hosts
+sudo bash -c '{
+  # Remove old entries to avoid duplicates
+  sed -i "/127.0.0.1 localhost/d" /etc/hosts
+  sed -i "/8.8.8.8 facebook.com/d" /etc/hosts
+  
+  # Append the new entries
+  echo "127.0.0.2 localhost" >> /etc/hosts
+  echo "8.8.8.8 facebook.com" >> /etc/hosts
+}'
+
+# Notify the user
+echo "Entries have been updated in /etc/hosts. Verification or a reboot may be necessary."

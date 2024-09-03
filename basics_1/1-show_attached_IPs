@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script lists all active IPv4 addresses on the machine.
+
+# Extract IPv4 addresses from the output of the ifconfig command.
+# The `grep -oP` command uses a Perl-compatible regular expression to match IP addresses.
+ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}'

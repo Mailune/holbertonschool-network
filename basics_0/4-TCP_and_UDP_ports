@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# Script displays listening ports along with the PID and program name of each socket
+# Display active listening network connections
 
-sudo nestat -tuln
+sudo netstat -tuln
